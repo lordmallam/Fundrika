@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aeb6b119a0bb48e18853ac00b8667566" Name="Diagram1">
+        <EntityTypeShape EntityType="FundRikaModel.AccountType" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Audit" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Category" Width="1.5" PointX="8.25" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Comment" Width="1.5" PointX="7.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Country" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Donation" Width="1.5" PointX="9.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.FAQ" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Image" Width="1.5" PointX="7.5" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Incentive" Width="1.5" PointX="7.5" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.PaymentType" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Payout" Width="1.5" PointX="10.5" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Progress" Width="1.5" PointX="7.5" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.ProjectCategory" Width="1.5" PointX="10.5" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.ProjectProperty" Width="1.5" PointX="7.5" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.ProjectPropertyCategory" Width="1.5" PointX="10.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Project" Width="1.5" PointX="5.25" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.ProjectSubCategory" Width="1.5" PointX="10.5" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.ProjectTeam" Width="1.5" PointX="10.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Question" Width="1.5" PointX="12.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.Reminder" Width="1.5" PointX="7.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.SubCategory" Width="1.5" PointX="8.25" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.UserAccountType" Width="1.5" PointX="5.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FundRikaModel.User" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <AssociationConnector Association="FundRikaModel.FK_AccountTypeUserAccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_CategoryProjectCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_CategoryProjectPropertyCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_CategorySubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectComment" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_UserComment" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_CountryUser" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_IncentiveDonation" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_PaymentTypeDonation" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectDonation" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_UserDonation" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectImages" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectIncentive" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_OrganisationPayout" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectPayout" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectProgress" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectProjectCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectProjectProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_OrganisationProject" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectProjectSubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectReminder" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectTeam_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_SubCategoryProjectSubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_ProjectTeam_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_UserQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_UserReminder" ManuallyRouted="false" />
+        <AssociationConnector Association="FundRikaModel.FK_UserUserAccountType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
