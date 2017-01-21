@@ -14,7 +14,7 @@ namespace Fundrika_Services.Objects
 
     public class AdminsObj
     {
-        public int Id { get; set; }
+        public int Id { get; set;}
 
         public string Name { get; set; }
 
