@@ -1,0 +1,1940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConceptPusherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActivationCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Audits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Entity" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Performedby" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="OldValue" Type="nvarchar(max)" />
+          <Property Name="NewValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrencySymbol" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Donations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DonanationType" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TransNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IncentiveId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incentives">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="EstimatedDeliveryTime" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Payouts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PayoutType" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TransNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="OrganisationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Progresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Implimented" Type="datetime" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectPropertyCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ShortDesc" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Target" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="OrganisationId" Type="int" Nullable="false" />
+          <Property Name="Video" Type="nvarchar(max)" />
+          <Property Name="YouTube" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProjectSubCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reminders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="FinalDate" Type="datetime" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccountTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountTypeId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="varbinary(max)" />
+          <Property Name="OrgCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="LoginType" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LoginCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="250" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="250" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SwiftCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="SortCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="250" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActivationCode" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <Association Name="FK_AccountTypeUserAccountType">
+          <End Role="AccountTypes" Type="Self.AccountTypes" Multiplicity="1" />
+          <End Role="UserAccountTypes" Type="Self.UserAccountTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccountTypes">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryProjectCategory">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="ProjectCategories" Type="Self.ProjectCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryProjectPropertyCategory">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="ProjectPropertyCategories" Type="Self.ProjectPropertyCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectPropertyCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategorySubCategory">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="SubCategories" Type="Self.SubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CountryUser">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IncentiveDonation">
+          <End Role="Incentives" Type="Self.Incentives" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incentives">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="IncentiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganisationPayout">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Payouts" Type="Self.Payouts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payouts">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganisationProject">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTypeDonation">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectComment">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectDonation">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectImages">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIncentive">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Incentives" Type="Self.Incentives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incentives">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectPayout">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Payouts" Type="Self.Payouts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payouts">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProgress">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Progresses" Type="Self.Progresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Progresses">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectCategory">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectCategories" Type="Self.ProjectCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectCategories">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectProperty">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectProperties" Type="Self.ProjectProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectProperties">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectProjectSubCategory">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectSubCategories" Type="Self.ProjectSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectSubCategories">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectQuestion">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectReminder">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Reminders" Type="Self.Reminders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminders">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectTeam_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectTeam">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectTeam_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ProjectTeam" Type="Self.ProjectTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectTeam">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategoryProjectSubCategory">
+          <End Role="SubCategories" Type="Self.SubCategories" Multiplicity="1" />
+          <End Role="ProjectSubCategories" Type="Self.ProjectSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectSubCategories">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserQuestion">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserReminder">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reminders" Type="Self.Reminders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUserAccountType">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserAccountTypes" Type="Self.UserAccountTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccountTypes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConceptPusherModelStoreContainer">
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audits" EntityType="Self.Audits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donations" EntityType="Self.Donations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incentives" EntityType="Self.Incentives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payouts" EntityType="Self.Payouts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Progresses" EntityType="Self.Progresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectCategories" EntityType="Self.ProjectCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectProperties" EntityType="Self.ProjectProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectPropertyCategories" EntityType="Self.ProjectPropertyCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectSubCategories" EntityType="Self.ProjectSubCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectTeam" EntityType="Self.ProjectTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reminders" EntityType="Self.Reminders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccountTypes" EntityType="Self.UserAccountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountTypeUserAccountType" Association="Self.FK_AccountTypeUserAccountType">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="UserAccountTypes" EntitySet="UserAccountTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryProjectCategory" Association="Self.FK_CategoryProjectCategory">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryProjectPropertyCategory" Association="Self.FK_CategoryProjectPropertyCategory">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ProjectPropertyCategories" EntitySet="ProjectPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategorySubCategory" Association="Self.FK_CategorySubCategory">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CountryUser" Association="Self.FK_CountryUser">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IncentiveDonation" Association="Self.FK_IncentiveDonation">
+            <End Role="Incentives" EntitySet="Incentives" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganisationPayout" Association="Self.FK_OrganisationPayout">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Payouts" EntitySet="Payouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganisationProject" Association="Self.FK_OrganisationProject">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTypeDonation" Association="Self.FK_PaymentTypeDonation">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectComment" Association="Self.FK_ProjectComment">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectDonation" Association="Self.FK_ProjectDonation">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectImages" Association="Self.FK_ProjectImages">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIncentive" Association="Self.FK_ProjectIncentive">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Incentives" EntitySet="Incentives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectPayout" Association="Self.FK_ProjectPayout">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Payouts" EntitySet="Payouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProgress" Association="Self.FK_ProjectProgress">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Progresses" EntitySet="Progresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectCategory" Association="Self.FK_ProjectProjectCategory">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectCategories" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectProperty" Association="Self.FK_ProjectProjectProperty">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectProperties" EntitySet="ProjectProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectProjectSubCategory" Association="Self.FK_ProjectProjectSubCategory">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectSubCategories" EntitySet="ProjectSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectQuestion" Association="Self.FK_ProjectQuestion">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectReminder" Association="Self.FK_ProjectReminder">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Reminders" EntitySet="Reminders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectTeam_Projects" Association="Self.FK_ProjectTeam_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectTeam" EntitySet="ProjectTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectTeam_Users" Association="Self.FK_ProjectTeam_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProjectTeam" EntitySet="ProjectTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategoryProjectSubCategory" Association="Self.FK_SubCategoryProjectSubCategory">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="ProjectSubCategories" EntitySet="ProjectSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment" Association="Self.FK_UserComment">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation" Association="Self.FK_UserDonation">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserQuestion" Association="Self.FK_UserQuestion">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserReminder" Association="Self.FK_UserReminder">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reminders" EntitySet="Reminders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUserAccountType" Association="Self.FK_UserUserAccountType">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccountTypes" EntitySet="UserAccountTypes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ConceptPusherModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ConceptPusherModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="ConceptPusherModel.User" />
+          <EntitySet Name="Projects" EntityType="ConceptPusherModel.Project" />
+          <EntitySet Name="Incentives" EntityType="ConceptPusherModel.Incentive" />
+          <EntitySet Name="Progresses" EntityType="ConceptPusherModel.Progress" />
+          <EntitySet Name="ProjectProperties" EntityType="ConceptPusherModel.ProjectProperty" />
+          <EntitySet Name="Donations" EntityType="ConceptPusherModel.Donation" />
+          <EntitySet Name="PaymentTypes" EntityType="ConceptPusherModel.PaymentType" />
+          <EntitySet Name="Payouts" EntityType="ConceptPusherModel.Payout" />
+          <EntitySet Name="Categories" EntityType="ConceptPusherModel.Category" />
+          <EntitySet Name="ProjectCategories" EntityType="ConceptPusherModel.ProjectCategory" />
+          <EntitySet Name="Countries" EntityType="ConceptPusherModel.Country" />
+          <EntitySet Name="FAQs" EntityType="ConceptPusherModel.FAQ" />
+          <EntitySet Name="SubCategories" EntityType="ConceptPusherModel.SubCategory" />
+          <EntitySet Name="ProjectSubCategories" EntityType="ConceptPusherModel.ProjectSubCategory" />
+          <EntitySet Name="ProjectPropertyCategories" EntityType="ConceptPusherModel.ProjectPropertyCategory" />
+          <EntitySet Name="Admins" EntityType="ConceptPusherModel.Admin" />
+          <EntitySet Name="Comments" EntityType="ConceptPusherModel.Comment" />
+          <EntitySet Name="Questions" EntityType="ConceptPusherModel.Question" />
+          <EntitySet Name="Reminders" EntityType="ConceptPusherModel.Reminder" />
+          <AssociationSet Name="OrganisationProject" Association="ConceptPusherModel.OrganisationProject">
+            <End Role="Organisation" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectIncentive" Association="ConceptPusherModel.ProjectIncentive">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Incentive" EntitySet="Incentives" />
+          </AssociationSet>
+          <AssociationSet Name="SubCategoryProjectSubCategory" Association="ConceptPusherModel.SubCategoryProjectSubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="ProjectSubCategory" EntitySet="ProjectSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProjectSubCategory" Association="ConceptPusherModel.ProjectProjectSubCategory">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectSubCategory" EntitySet="ProjectSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryProjectCategory" Association="ConceptPusherModel.CategoryProjectCategory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ProjectCategory" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProjectCategory" Association="ConceptPusherModel.ProjectProjectCategory">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectCategory" EntitySet="ProjectCategories" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryProjectPropertyCategory" Association="ConceptPusherModel.CategoryProjectPropertyCategory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ProjectPropertyCategory" EntitySet="ProjectPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProjectProperty" Association="ConceptPusherModel.ProjectProjectProperty">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectProperty" EntitySet="ProjectProperties" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProgress" Association="ConceptPusherModel.ProjectProgress">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Progress" EntitySet="Progresses" />
+          </AssociationSet>
+          <AssociationSet Name="IncentiveDonation" Association="ConceptPusherModel.IncentiveDonation">
+            <End Role="Incentive" EntitySet="Incentives" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectDonation" Association="ConceptPusherModel.ProjectDonation">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentTypeDonation" Association="ConceptPusherModel.PaymentTypeDonation">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectQuestion" Association="ConceptPusherModel.ProjectQuestion">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectPayout" Association="ConceptPusherModel.ProjectPayout">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Payout" EntitySet="Payouts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectComment" Association="ConceptPusherModel.ProjectComment">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="OrganisationPayout" Association="ConceptPusherModel.OrganisationPayout">
+            <End Role="Organisation" EntitySet="Users" />
+            <End Role="Payout" EntitySet="Payouts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectReminder" Association="ConceptPusherModel.ProjectReminder">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Reminder" EntitySet="Reminders" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="ConceptPusherModel.Images" />
+          <AssociationSet Name="ProjectImages" Association="ConceptPusherModel.ProjectImages">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="Audits" EntityType="ConceptPusherModel.Audit" />
+          <AssociationSet Name="CountryUser" Association="ConceptPusherModel.CountryUser">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserDonation" Association="ConceptPusherModel.UserDonation">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="UserComment" Association="ConceptPusherModel.UserComment">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="UserQuestion" Association="ConceptPusherModel.UserQuestion">
+            <End EntitySet="Users" Role="User" />
+            <End EntitySet="Questions" Role="Question" />
+          </AssociationSet>
+          <AssociationSet Name="UserReminder" Association="ConceptPusherModel.UserReminder">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Reminder" EntitySet="Reminders" />
+          </AssociationSet>
+          <EntitySet Name="AccountTypes" EntityType="ConceptPusherModel.AccountType" />
+          <EntitySet Name="UserAccountTypes" EntityType="ConceptPusherModel.UserAccountType" />
+          <AssociationSet Name="AccountTypeUserAccountType" Association="ConceptPusherModel.AccountTypeUserAccountType">
+            <End Role="AccountType" EntitySet="AccountTypes" />
+            <End Role="UserAccountType" EntitySet="UserAccountTypes" />
+          </AssociationSet>
+          <AssociationSet Name="UserUserAccountType" Association="ConceptPusherModel.UserUserAccountType">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAccountType" EntitySet="UserAccountTypes" />
+          </AssociationSet>
+          <AssociationSet Name="CategorySubCategory" Association="ConceptPusherModel.CategorySubCategory">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="ConceptPusherModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ConceptPusherModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ConceptPusherModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="ProjectTeams" EntityType="ConceptPusherModel.ProjectTeam" />
+          <AssociationSet Name="FK_ProjectTeam_Projects" Association="ConceptPusherModel.FK_ProjectTeam_Projects">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectTeam" EntitySet="ProjectTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectTeam_Users" Association="ConceptPusherModel.FK_ProjectTeam_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProjectTeam" EntitySet="ProjectTeams" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <Property Name="OrgCode" Type="String" MaxLength="50" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="LoginType" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="LoginCode" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Bank" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="AccountName" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="SwiftCode" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="SortCode" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Currency" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActivationCode" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Projects" Relationship="ConceptPusherModel.OrganisationProject" FromRole="Organisation" ToRole="Project" />
+          <NavigationProperty Name="Payouts" Relationship="ConceptPusherModel.OrganisationPayout" FromRole="Organisation" ToRole="Payout" />
+          <NavigationProperty Name="Country" Relationship="ConceptPusherModel.CountryUser" FromRole="User" ToRole="Country" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Donations" Relationship="ConceptPusherModel.UserDonation" FromRole="User" ToRole="Donation" />
+          <NavigationProperty Name="Comments" Relationship="ConceptPusherModel.UserComment" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Questions" Relationship="ConceptPusherModel.UserQuestion" FromRole="User" ToRole="Question" />
+          <NavigationProperty Name="Reminders" Relationship="ConceptPusherModel.UserReminder" FromRole="User" ToRole="Reminder" />
+          <NavigationProperty Name="UserAccountTypes" Relationship="ConceptPusherModel.UserUserAccountType" FromRole="User" ToRole="UserAccountType" />
+          <NavigationProperty Name="ProjectTeams" Relationship="ConceptPusherModel.FK_ProjectTeam_Users" FromRole="User" ToRole="ProjectTeam" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ShortDesc" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Target" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Duration" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Organisation" Relationship="ConceptPusherModel.OrganisationProject" FromRole="Project" ToRole="Organisation" />
+          <Property Name="OrganisationId" Type="Int32" Nullable="false" />
+          <Property Name="Video" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="YouTube" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Incentives" Relationship="ConceptPusherModel.ProjectIncentive" FromRole="Project" ToRole="Incentive" />
+          <NavigationProperty Name="ProjectSubCategories" Relationship="ConceptPusherModel.ProjectProjectSubCategory" FromRole="Project" ToRole="ProjectSubCategory" />
+          <NavigationProperty Name="ProjectCategories" Relationship="ConceptPusherModel.ProjectProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
+          <NavigationProperty Name="ProjectProperties" Relationship="ConceptPusherModel.ProjectProjectProperty" FromRole="Project" ToRole="ProjectProperty" />
+          <NavigationProperty Name="Progresses" Relationship="ConceptPusherModel.ProjectProgress" FromRole="Project" ToRole="Progress" />
+          <NavigationProperty Name="Donations" Relationship="ConceptPusherModel.ProjectDonation" FromRole="Project" ToRole="Donation" />
+          <NavigationProperty Name="Questions" Relationship="ConceptPusherModel.ProjectQuestion" FromRole="Project" ToRole="Question" />
+          <NavigationProperty Name="Payouts" Relationship="ConceptPusherModel.ProjectPayout" FromRole="Project" ToRole="Payout" />
+          <NavigationProperty Name="Comments" Relationship="ConceptPusherModel.ProjectComment" FromRole="Project" ToRole="Comment" />
+          <NavigationProperty Name="Reminders" Relationship="ConceptPusherModel.ProjectReminder" FromRole="Project" ToRole="Reminder" />
+          <NavigationProperty Name="Images" Relationship="ConceptPusherModel.ProjectImages" FromRole="Project" ToRole="Images" />
+          <NavigationProperty Name="ProjectTeams" Relationship="ConceptPusherModel.FK_ProjectTeam_Projects" FromRole="Project" ToRole="ProjectTeam" />
+        </EntityType>
+        <EntityType Name="Incentive">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Qty" Type="Int32" Nullable="true" />
+          <Property Name="EstimatedDeliveryTime" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectIncentive" FromRole="Incentive" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Donations" Relationship="ConceptPusherModel.IncentiveDonation" FromRole="Incentive" ToRole="Donation" />
+          <Property Name="DeliveryLocation" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Progress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Implimented" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectProgress" FromRole="Progress" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectProjectProperty" FromRole="ProjectProperty" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Scale="2" Precision="18" />
+          <Property Name="DonanationType" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="TransNo" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Incentive" Relationship="ConceptPusherModel.IncentiveDonation" FromRole="Donation" ToRole="Incentive" />
+          <Property Name="IncentiveId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectDonation" FromRole="Donation" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PaymentType" Relationship="ConceptPusherModel.PaymentTypeDonation" FromRole="Donation" ToRole="PaymentType" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.UserDonation" FromRole="Donation" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Donations" Relationship="ConceptPusherModel.PaymentTypeDonation" FromRole="PaymentType" ToRole="Donation" />
+        </EntityType>
+        <EntityType Name="Payout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Scale="2" Precision="18" />
+          <Property Name="PayoutType" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="TransNo" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectPayout" FromRole="Payout" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Organisation" Relationship="ConceptPusherModel.OrganisationPayout" FromRole="Payout" ToRole="Organisation" />
+          <Property Name="OrganisationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="50" Nullable="true" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ProjectCategories" Relationship="ConceptPusherModel.CategoryProjectCategory" FromRole="Category" ToRole="ProjectCategory" />
+          <NavigationProperty Name="ProjectPropertyCategories" Relationship="ConceptPusherModel.CategoryProjectPropertyCategory" FromRole="Category" ToRole="ProjectPropertyCategory" />
+          <NavigationProperty Name="SubCategories" Relationship="ConceptPusherModel.CategorySubCategory" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="ProjectCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Category" Relationship="ConceptPusherModel.CategoryProjectCategory" FromRole="ProjectCategory" ToRole="Category" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="ConceptPusherModel.CountryUser" FromRole="Country" ToRole="User" />
+          <Property Name="URL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencySymbol" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="Max" Nullable="false" Unicode="true" FixedLength="false" />
+          <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="true" Precision="3" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <Property Name="Color" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ProjectSubCategories" Relationship="ConceptPusherModel.SubCategoryProjectSubCategory" FromRole="SubCategory" ToRole="ProjectSubCategory" />
+          <NavigationProperty Name="Category" Relationship="ConceptPusherModel.CategorySubCategory" FromRole="SubCategory" ToRole="Category" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectSubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SubCategory" Relationship="ConceptPusherModel.SubCategoryProjectSubCategory" FromRole="ProjectSubCategory" ToRole="SubCategory" />
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectProjectSubCategory" FromRole="ProjectSubCategory" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectPropertyCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Category" Relationship="ConceptPusherModel.CategoryProjectPropertyCategory" FromRole="ProjectPropertyCategory" ToRole="Category" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Icon" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActivationCode" Type="String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectComment" FromRole="Comment" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.UserComment" FromRole="Comment" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectQuestion" FromRole="Question" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.UserQuestion" FromRole="Question" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="FinalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectReminder" FromRole="Reminder" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.UserReminder" FromRole="Reminder" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="OrganisationProject">
+          <End Type="ConceptPusherModel.User" Role="Organisation" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectIncentive">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Incentive" Role="Incentive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incentive">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SubCategoryProjectSubCategory">
+          <End Type="ConceptPusherModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectSubCategory" Role="ProjectSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectSubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectProjectSubCategory">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectSubCategory" Role="ProjectSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectSubCategory">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryProjectCategory">
+          <End Type="ConceptPusherModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectCategory" Role="ProjectCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectProjectCategory">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectCategory" Role="ProjectCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectCategory">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryProjectPropertyCategory">
+          <End Type="ConceptPusherModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectPropertyCategory" Role="ProjectPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectPropertyCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectProjectProperty">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectProperty" Role="ProjectProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectProperty">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectProgress">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Progress" Role="Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IncentiveDonation">
+          <End Type="ConceptPusherModel.Incentive" Role="Incentive" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incentive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="IncentiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectDonation">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PaymentTypeDonation">
+          <End Type="ConceptPusherModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectQuestion">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectPayout">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Payout" Role="Payout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payout">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectComment">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrganisationPayout">
+          <End Type="ConceptPusherModel.User" Role="Organisation" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Payout" Role="Payout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payout">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectReminder">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Reminder" Role="Reminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminder">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="StatusOptions">
+          <Member Name="Active" />
+          <Member Name="Inactive" />
+          <Member Name="Suspended" />
+          <Member Name="Blocked" />
+        </EnumType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URL" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.ProjectImages" FromRole="Images" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="ProjectImages">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Images" Role="Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Entity" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Performedby" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OldValue" Type="String" MaxLength="Max" Nullable="true" Unicode="true" FixedLength="false" />
+          <Property Name="NewValue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IP" Type="String" MaxLength="250" Nullable="true" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="CountryUser">
+          <End Type="ConceptPusherModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserDonation">
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserComment">
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserQuestion">
+          <End Type="ConceptPusherModel.User" Multiplicity="1" Role="User" />
+          <End Type="ConceptPusherModel.Question" Multiplicity="*" Role="Question" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserReminder">
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="1" />
+          <End Type="ConceptPusherModel.Reminder" Role="Reminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserAccountTypes" Relationship="ConceptPusherModel.AccountTypeUserAccountType" FromRole="AccountType" ToRole="UserAccountType" />
+        </EntityType>
+        <EntityType Name="UserAccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AccountType" Relationship="ConceptPusherModel.AccountTypeUserAccountType" FromRole="UserAccountType" ToRole="AccountType" />
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.UserUserAccountType" FromRole="UserAccountType" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AccountTypeUserAccountType">
+          <End Type="ConceptPusherModel.AccountType" Role="AccountType" Multiplicity="1" />
+          <End Type="ConceptPusherModel.UserAccountType" Role="UserAccountType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccountType">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserUserAccountType">
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="1" />
+          <End Type="ConceptPusherModel.UserAccountType" Role="UserAccountType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccountType">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategorySubCategory">
+          <End Type="ConceptPusherModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ConceptPusherModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="ProjectTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ConceptPusherModel.FK_ProjectTeam_Projects" FromRole="ProjectTeam" ToRole="Project" />
+          <NavigationProperty Name="User" Relationship="ConceptPusherModel.FK_ProjectTeam_Users" FromRole="ProjectTeam" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_ProjectTeam_Projects">
+          <End Type="ConceptPusherModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectTeam" Role="ProjectTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectTeam">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectTeam_Users">
+          <End Type="ConceptPusherModel.User" Role="User" Multiplicity="1" />
+          <End Type="ConceptPusherModel.ProjectTeam" Role="ProjectTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectTeam">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConceptPusherModelStoreContainer" CdmEntityContainer="ConceptPusherModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+          <ScalarProperty Name="LoginCode" ColumnName="LoginCode" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+          <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="YouTube" ColumnName="YouTube" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incentives">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Incentive)">
+        <MappingFragment StoreEntitySet="Incentives">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="EstimatedDeliveryTime" ColumnName="EstimatedDeliveryTime" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Progresses">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Progress)">
+        <MappingFragment StoreEntitySet="Progresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Implimented" ColumnName="Implimented" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectProperties">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.ProjectProperty)">
+        <MappingFragment StoreEntitySet="ProjectProperties">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Donation)">
+        <MappingFragment StoreEntitySet="Donations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DonanationType" ColumnName="DonanationType" />
+          <ScalarProperty Name="TransNo" ColumnName="TransNo" />
+          <ScalarProperty Name="IncentiveId" ColumnName="IncentiveId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.PaymentType)">
+        <MappingFragment StoreEntitySet="PaymentTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payouts">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Payout)">
+        <MappingFragment StoreEntitySet="Payouts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayoutType" ColumnName="PayoutType" />
+          <ScalarProperty Name="TransNo" ColumnName="TransNo" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.ProjectCategory)">
+        <MappingFragment StoreEntitySet="ProjectCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CurrencySymbol" ColumnName="CurrencySymbol" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.FAQ)">
+        <MappingFragment StoreEntitySet="FAQs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.SubCategory)">
+        <MappingFragment StoreEntitySet="SubCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSubCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.ProjectSubCategory)">
+        <MappingFragment StoreEntitySet="ProjectSubCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectPropertyCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.ProjectPropertyCategory)">
+        <MappingFragment StoreEntitySet="ProjectPropertyCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Admin)">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Question)">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reminders">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Reminder)">
+        <MappingFragment StoreEntitySet="Reminders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FinalDate" ColumnName="FinalDate" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Images)">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.Audit)">
+        <MappingFragment StoreEntitySet="Audits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="Entity" ColumnName="Entity" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Performedby" ColumnName="Performedby" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.AccountType)">
+        <MappingFragment StoreEntitySet="AccountTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccountTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ConceptPusherModel.UserAccountType)">
+        <MappingFragment StoreEntitySet="UserAccountTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="ProjectTeams">
+            <EntityTypeMapping TypeName="ConceptPusherModel.ProjectTeam">
+              <MappingFragment StoreEntitySet="ProjectTeam">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

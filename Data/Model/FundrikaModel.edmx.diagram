@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="192b6d1044874b9c9184a454d4f9c0d7" Name="Diagram1" ZoomLevel="93" >
+        <EntityTypeShape EntityType="ConceptPusherModel.User" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Project" Width="1.5" PointX="2.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Incentive" Width="1.75" PointX="6.875" PointY="0.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Progress" Width="1.5" PointX="5.125" PointY="3.25" />
+        <EntityTypeShape EntityType="ConceptPusherModel.ProjectProperty" Width="1.5" PointX="7" PointY="5.375" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Donation" Width="1.5" PointX="4.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ConceptPusherModel.PaymentType" Width="1.5" PointX="13.125" PointY="6" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Payout" Width="1.5" PointX="9.875" PointY="6.125" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Category" Width="1.5" PointX="11.5" PointY="1.375" />
+        <EntityTypeShape EntityType="ConceptPusherModel.ProjectCategory" Width="1.5" PointX="11.5" PointY="4.125" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Country" Width="1.5" PointX="0.5" PointY="8.625" />
+        <EntityTypeShape EntityType="ConceptPusherModel.FAQ" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.SubCategory" Width="1.5" PointX="9.125" PointY="0.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.ProjectSubCategory" Width="1.5" PointX="9.375" PointY="3.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.ProjectPropertyCategory" Width="1.5" PointX="7.625" PointY="3.5" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Admin" Width="1.5" PointX="6.875" PointY="7.875" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Comment" Width="1.5" PointX="4.125" PointY="10.25" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Question" Width="1.5" PointX="10.625" PointY="9" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Reminder" Width="1.5" PointX="8.5" PointY="10.25" />
+        <AssociationConnector Association="ConceptPusherModel.OrganisationProject" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectIncentive" />
+        <AssociationConnector Association="ConceptPusherModel.SubCategoryProjectSubCategory" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectProjectSubCategory" />
+        <AssociationConnector Association="ConceptPusherModel.CategoryProjectCategory" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectProjectCategory" />
+        <AssociationConnector Association="ConceptPusherModel.CategoryProjectPropertyCategory" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectProjectProperty" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectProgress" />
+        <AssociationConnector Association="ConceptPusherModel.IncentiveDonation" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectDonation" />
+        <AssociationConnector Association="ConceptPusherModel.PaymentTypeDonation" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectQuestion" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectPayout" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectComment" />
+        <AssociationConnector Association="ConceptPusherModel.OrganisationPayout" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectReminder" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Images" Width="1.5" PointX="2.625" PointY="0.5" />
+        <AssociationConnector Association="ConceptPusherModel.ProjectImages" />
+        <EntityTypeShape EntityType="ConceptPusherModel.Audit" Width="1.5" PointX="11.25" PointY="11.75" />
+        <AssociationConnector Association="ConceptPusherModel.CountryUser" />
+        <AssociationConnector Association="ConceptPusherModel.UserDonation" />
+        <AssociationConnector Association="ConceptPusherModel.UserComment" />
+        <AssociationConnector Association="ConceptPusherModel.UserQuestion" />
+        <AssociationConnector Association="ConceptPusherModel.UserReminder" />
+        <EntityTypeShape EntityType="ConceptPusherModel.AccountType" Width="1.5" PointX="0.625" PointY="13.25" />
+        <EntityTypeShape EntityType="ConceptPusherModel.UserAccountType" Width="1.5" PointX="4.125" PointY="13.375" />
+        <AssociationConnector Association="ConceptPusherModel.AccountTypeUserAccountType" />
+        <AssociationConnector Association="ConceptPusherModel.UserUserAccountType" />
+        <AssociationConnector Association="ConceptPusherModel.CategorySubCategory" />
+        <EntityTypeShape EntityType="ConceptPusherModel.sysdiagram" Width="1.5" PointX="6.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ConceptPusherModel.ProjectTeam" Width="1.5" PointX="11.625" PointY="6.5" />
+        <AssociationConnector Association="ConceptPusherModel.FK_ProjectTeam_Projects" />
+        <AssociationConnector Association="ConceptPusherModel.FK_ProjectTeam_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
