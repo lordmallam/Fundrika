@@ -16,6 +16,10 @@ using Microsoft.Owin.Security.OAuth;
 using Fundrika_WebApi.Models;
 using Fundrika_WebApi.Providers;
 using Fundrika_WebApi.Results;
+using Fundrika_Services.Services.Interfaces;
+using Fundrika_Services.Objects;
+using Fundrika_Services.Services;
+using Fundrika.Data;
 
 namespace Fundrika_WebApi.Controllers
 {
@@ -321,22 +325,29 @@ namespace Fundrika_WebApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(User user)
         {
-            if (!ModelState.IsValid)
+            Fundrika_Services.Services.Interfaces.IUser userService = new UserService();
+
+            if (!IsValidNewUser(user))
             {
-                return BadRequest(ModelState);
+               //TODO: set error message
+                return BadRequest();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            try
             {
-                return GetErrorResult(result);
+                UsersObj result = await userService.AddUserAsync(user);
+                if (result == null)
+                {
+                    return BadRequest("Empty response");
+                }
             }
+            catch (Exception e)
+            {
 
+                return BadRequest(e.Message);
+            }
             return Ok();
         }
 
@@ -385,6 +396,13 @@ namespace Fundrika_WebApi.Controllers
         }
 
         #region Helpers
+
+        private bool IsValidNewUser(User user)
+        {
+            //TODO: set password criteria and check email.
+            var result = (user.Password != null && user.Email != null && user.Name != null);
+            return result;
+        }
 
         private IAuthenticationManager Authentication
         {

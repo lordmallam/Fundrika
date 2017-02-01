@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Fundrika.Data;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Fundrika_Services.Objects
 {
@@ -9,6 +12,14 @@ namespace Fundrika_Services.Objects
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public static explicit operator AccountTypeObj(AccountType v)
+        {
+            AccountTypeObj result = new AccountTypeObj();
+            result.Id = v.Id;
+            result.Name = v.Name;
+            return result;
+        }
     }
 
 
@@ -418,6 +429,35 @@ namespace Fundrika_Services.Objects
         public string ActivationCode { get; set; }
 
         public int? CountryId { get; set; }
+
+        public List<AccountTypeObj> AccountTypes { get; set; }
+
+        public static explicit operator UsersObj(User v)
+        {
+            UsersObj result = new UsersObj();
+            result.Id = v.Id;
+            result.Name = v.Name;
+            result.Description = v.Description;
+            result.Icon = v.Icon;
+            result.OrgCode = v.OrgCode;
+            result.Address = v.Address;
+            result.Phone = v.Phone;
+            result.Email = v.Email;
+            result.LoginType = v.LoginType;
+            result.LoginCode = v.LoginCode;
+            result.ContactPerson = v.ContactPerson;
+            result.Bank = v.Bank;
+            result.AccountNumber = v.AccountNumber;
+            result.AccountName = v.AccountName;
+            result.SwiftCode = v.SwiftCode;
+            result.Currency = v.Currency;
+            result.Created = v.Created;
+            result.Status = v.Status;
+            result.IsActive = v.IsActive;
+            result.ActivationCode = v.ActivationCode;
+            result.CountryId = v.CountryId;
+            return result;
+        }
 
     }
 

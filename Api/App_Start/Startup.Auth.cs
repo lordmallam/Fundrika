@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Fundrika_WebApi.Providers;
 using Fundrika_WebApi.Models;
+using Fundrika.Data;
 
 namespace Fundrika_WebApi
 {

@@ -1,6 +1,7 @@
 ﻿
 using Fundrika.Data;
 using Fundrika_Services.Objects;
+using Fundrika_Services.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,9 @@ using System.Web;
 
 namespace Fundrika_Services.Services
 {
-    public class CountryService
+    public class CountryService : ICountry
     {
         private FundRikaEntities db = new FundRikaEntities();
-
-        public Country AddCountry(Country obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteCountry(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<CountriesObj> GetCountry()
         {
@@ -47,8 +38,18 @@ namespace Fundrika_Services.Services
                 CurrencySymbol = x.CurrencySymbol
             }).FirstOrDefault();            
         }
+        
+        CountriesObj ICountry.AddCountry(Country obj)
+        {
+            throw new NotImplementedException();
+        }
 
-        public Country UpdateCountry(Country obj)
+        CountriesObj ICountry.UpdateCountry(Country obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteCountry(int id)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,6 @@
 ﻿using Fundrika_Services.Objects;
 using Fundrika_Services.Services;
+using Fundrika_Services.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace Fundrika_WebApi.Controllers
 {
     public class CountryController : ApiController
     {
-        private CountryService countryService = new CountryService();
+        private ICountry countryService = new CountryService();
 
         public IEnumerable<CountriesObj> Get()
         {
             return countryService.GetCountry(); ;
         }
 
+        [Authorize]
         public IHttpActionResult Get(int id)
         {
             var result = countryService.GetCountry(id);

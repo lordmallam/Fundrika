@@ -10,6 +10,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Fundrika_WebApi.Models;
+using Fundrika_Services.Services;
+using Fundrika_Services.Objects;
 
 namespace Fundrika_WebApi.Providers
 {
@@ -29,9 +31,12 @@ namespace Fundrika_WebApi.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
-
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+            if (context.UserName == null || context.Password == null) {
+                context.SetError("Bad Request", "username and password must not be empty.");
+                return;
+            }
+            UserService userService = new UserService();
+            UsersObj user = await userService.Authenticate(context.UserName, context.Password);
 
             if (user == null)
             {
@@ -39,12 +44,11 @@ namespace Fundrika_WebApi.Providers
                 return;
             }
 
-            ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-               OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+            ClaimsIdentity oAuthIdentity = await userService.GenerateUserIdentityAsync(user,OAuthDefaults.AuthenticationType);
+            ClaimsIdentity cookiesIdentity = await userService.GenerateUserIdentityAsync(user,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName);
+            AuthenticationProperties properties = CreateProperties(user.Email);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
