@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width">
       <base href="/">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+      <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i" rel="stylesheet">
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
-
+      <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- injector:css -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endinjector -->
@@ -27,12 +28,10 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <nav>
-
-      </nav>
+      <div ng-include="'components/nav/nav.html'" class="relative"></div>
     </div>
 
-    <div class="container">
+    <div class="side-space-15">
     <div ng-view=""></div>
     </div>
 
@@ -65,6 +64,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -75,11 +77,18 @@
        <!-- injector:js -->
        <script src="/scripts/app.js"></script>
        <script src="/scripts/controllers/about.js"></script>
+       <script src="/scripts/controllers/admin/category.js"></script>
+       <script src="/scripts/controllers/contact.js"></script>
        <script src="/scripts/controllers/login.js"></script>
        <script src="/scripts/controllers/main.js"></script>
+       <script src="/scripts/services/api/category.js"></script>
+       <script src="/scripts/services/api/country.js"></script>
        <script src="/scripts/services/auth.js"></script>
        <script src="/scripts/services/settings.js"></script>
        <script src="/scripts/services/user.js"></script>
+       <script src="/scripts/services/utility.js"></script>
+       <script src="/components/nav/admin_nav.js"></script>
+       <script src="/components/nav/nav.js"></script>
        <!-- endinjector -->
 </body>
 </html>

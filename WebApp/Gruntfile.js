@@ -52,7 +52,10 @@ module.exports = function (grunt) {
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss', 'injector']
+        tasks: ['newer:copy:styles', 'postcss', 'injector'],
+        options: {
+            livereload: '<%= connect.options.livereload %>'
+        }
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -218,10 +221,12 @@ module.exports = function (grunt) {
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
               detect: {
-                  js: /'(.*\.js)'/gi
+                  js: /'(.*\.js)'/gi,
+                  css: /'(.*\.css)'/gi
               },
               replace: {
-                js: '\'{{filePath}}\','
+                  js: '\'{{filePath}}\',',
+                  css: '\'{{filePath}}\','
               }
             }
           }
@@ -429,7 +434,7 @@ module.exports = function (grunt) {
         },
         local_dependencies: {
             files: {
-                '<%= yeoman.app %>/index.html': ['<%= yeoman.app %>/scripts/**/*.js', '<%= yeoman.app %>/styles/**/*.css'],
+                '<%= yeoman.app %>/index.html': ['<%= yeoman.app %>/scripts/**/*.js','<%= yeoman.app %>/scripts/**/**/*.js', '<%= yeoman.app %>/components/**/*.js', '<%= yeoman.app %>/styles/**/*.css'],
             }
         }
     },

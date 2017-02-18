@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
       $locationProvider.html5Mode({
@@ -70,6 +71,16 @@ angular
             controller: 'aboutCtrl',
             controllerAs: 'about'
         })
+          .when('/admin', {
+            templateUrl: 'views/admin/index.html',
+            controller: 'adminNavCtrl',
+            controllerAs: 'adminNav'
+          })
+          .when('/admin/category', {
+              templateUrl: 'views/admin/category.html',
+              controller: 'adminCategoryCtrl',
+              controllerAs: 'adminCat'
+          })
         .otherwise({
             redirectTo: '/'
         });

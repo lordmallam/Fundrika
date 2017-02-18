@@ -12,13 +12,23 @@ namespace Fundrika_Services.Services
         private FundRikaEntities db = new FundRikaEntities();
         public List<CategoriesObj> GetCategory()
         {
-            return db.Categories.Select(x => new CategoriesObj
+            Utility nUtility = new Utility();
+            var results = db.Categories.Select(x => new CategoriesObj
             {
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                Color = x.Color
+                Color = x.Color,
+                Icon = x.Icon
             }).ToList();
+
+            foreach (var item in results)
+            {
+                if (item.Icon != null) {
+                    item.Icon = nUtility.getThumbnail(item.Icon);
+                }
+            }
+            return results;
         }
 
         public CategoriesObj GetCategory(int id)
@@ -28,7 +38,8 @@ namespace Fundrika_Services.Services
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                Color = x.Color
+                Color = x.Color,
+                Icon = x.Icon
             }).FirstOrDefault();
         }
 

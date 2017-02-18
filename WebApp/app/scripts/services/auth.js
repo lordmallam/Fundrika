@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('fundrikaApp')
-    .factory('Auth', ['$http', '$q', 'baseUrl', '$location', '$rootScope', 'User', function ($location, $rootScope, $http, $q, User, Settings, baseUrl) {
+    .factory('Auth', ['$http', '$q', 'Settings', 'baseUrl', '$location', '$rootScope', 'User', function ($http, $q, Settings, baseUrl,$location, $rootScope,User ) {
         return {
 
             /**

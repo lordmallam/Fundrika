@@ -1,0 +1,50 @@
+﻿<div ng-controller="adminNavCtrl as adminNav">
+   <div class="row">
+       <div class="col-md-12">
+            <nav class="admin-nav">
+                <a href="/admin" class="font-white"><div class="admin-nav-parent first" ng-class="{active: adminNav.isActive('/admin')}">Admin Panel<i class="fa fa-home pull-right"></i></div></a>
+                <div class="admin-nav-parent" ng-class="{active: adminNav.isActive('/admin/category') || adminNav.isActive('/admin/sub-category')}" ng-click="adminNav.toggle('category')">Categories<i class="fa fa-tags pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showCategoryMenu || adminNav.isActive('/admin/category') || adminNav.isActive('/admin/sub-category')">
+                    <a href="/admin/category" ng-class="{active: adminNav.isActive('/admin/category')}">Category</a>
+                    <a href="/admin/sub-category" ng-class="{active: adminNav.isActive('/admin/sub-category')}">Sub Category</a>
+                </div>
+                </div>
+                
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('country')">Countries<i class="fa fa-flag pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showCountryMenu">
+                    <a href="/admin/country">Country</a>
+                </div>
+                </div>
+                
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('project')">Projects<i class="fa fa-briefcase pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showProjectMenu">
+                    <a href="/admin/project">Project</a>
+                    <a href="/admin/reminder">Reminder</a>
+                </div>
+                </div>
+                
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('payment')">Payments<i class="fa fa-credit-card pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showPaymentMenu">
+                    <a href="/admin/donation">Donation</a>
+                    <a href="/admin/payout">Payout</a>
+                </div>
+                </div>
+                
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('user')">Users<i class="fa fa-users pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showUserMenu">
+                    <a href="/admin/user">User</a>
+                    <a href="/admin/admin">Admin</a>
+                </div>
+                </div>
+                
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('faq')">FAQs<i class="fa fa-question-circle pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showFAQMenu">
+                    <a href="/admin/faq">FAQ</a>
+                </div>
+                </div>
+                
+                <div class="clear"></div>
+            </nav>
+        </div>
+   </div>
+</div>

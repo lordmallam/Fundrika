@@ -93,6 +93,7 @@
     <Compile Include="Services\AccountTypeService.cs" />
     <Compile Include="Services\Interfaces\IUser.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

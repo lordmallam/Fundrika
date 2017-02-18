@@ -8,6 +8,6 @@
  * Controller of the yoApp
  */
 angular.module('fundrikaApp')
-  .controller('mainCtrl', function () {
-    
+  .controller('mainCtrl', function (User) {
+      var currentUser = User.getCurrentUser();
   });
