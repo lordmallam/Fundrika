@@ -236,6 +236,135 @@ border-radius: 5px;
 /* End App Styling */
 
 
+/* Directive Styles*/
+
+.text-limiter input{
+    width:93%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+
+.text-limiter input:focus{
+    border:none;
+    outline: 0 none;
+}
+
+
+.text-limiter textarea{
+    width:93%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+
+.text-limiter textarea:focus{
+    border:none;
+    outline: 0 none;
+}
+
+
+
+.text-limiter label{
+    float:right;
+    max-width: 7%;
+    font-size:small;
+    font-weight:normal;
+}
+
+.auto-height{
+    height:auto !important;
+}
+
+.fontColorLightBlue{
+    color:#3bb5d5;
+}
+
+.fontColorGrey {
+    color: #999999;
+}
+
+.font-small {
+    font-size: small !important;
+}
+.font-medium {
+    font-size: medium !important;
+}
+.font-large {
+    font-size: large !important;
+}
+.font-xlarge {
+    font-size: x-large !important;
+}
+.font-xxlarge {
+    font-size: xx-large !important;
+}
+.corners-10 {
+    -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+.corners-5 {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.corners-5-left{
+    -webkit-border-top-left-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+.corners-5-right{
+    -webkit-border-top-right-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-topright: 5px;
+-moz-border-radius-bottomright: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.corners-5-bottom{
+    -webkit-border-bottom-left-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+-moz-border-radius-bottomright: 5px;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.corners-5-top{
+    -webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+
+.image-upload-btn-md {
+    padding:15px;
+    background-color:#e5e5e5;
+}
+
+.image-upload-image-md{
+    width:100%;
+    background-size:cover;
+    background-position:center center;
+}
+
+.image-upload .md{
+    border:1px solid #e5e5e5;
+}
+
+.bold-text{
+    font-weight:bold;
+}
+
+/* End Directive Styles*/
+
+
 /* Overwrites */
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
 background-color:#538ac6;

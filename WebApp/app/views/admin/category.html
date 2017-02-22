@@ -10,7 +10,7 @@
                     Categories
                 </div>
                 <div class="col-md-6">
-                    <span class="fa-stack fa-lg icon-bg pull-right" title="Add new item">
+                    <span class="fa-stack fa-lg icon-bg pull-right" title="Add new item" ng-click="adminCat.openAddDialog()">
                         <i class="fa fa-circle fa-stack-2x cursor-pointer"></i>
                         <i class="fa fa-plus fa-stack-1x icon-color cursor-pointer"></i>
                     </span>
@@ -43,6 +43,10 @@
                             <td class="text-center"><img ng-src="{{adminCat.getImageFromByte(item.Icon)}}" alt="" class="icon-thumbs round-corners"/></td>
                             <td class="text-center"><div class="color-thumbs round-corners" ng-style="{'background-color' : '#' + item.Color}"></div><span class="code-text code-text-adjustment">#{{item.Color}}</span></td>
                             <td>      
+                                <span class="fa-stack fa-md icon-bg pull-right" title="View sub categories">
+                                    <i class="fa fa-circle fa-stack-2x cursor-pointer"></i>
+                                    <i class="fa fa-list-ul  fa-stack-1x fa-stack-1x-f icon-color cursor-pointer"></i>
+                                </span>
                                 <span class="fa-stack fa-md icon-bg pull-right" title="Edit item">
                                     <i class="fa fa-circle fa-stack-2x cursor-pointer"></i>
                                     <i class="fa fa-pencil  fa-stack-1x fa-stack-1x-f icon-color cursor-pointer"></i>
@@ -51,6 +55,7 @@
                                     <i class="fa fa-circle fa-stack-2x cursor-pointer"></i>
                                     <i class="fa fa-trash  fa-stack-1x fa-stack-1x-f icon-color cursor-pointer"></i>
                                 </span>
+                                
                             </td>
                         </tr>
                     </tbody>
@@ -61,3 +66,40 @@
        
     </div> 
 </div>
+
+<script type="text/ng-template" id="addItem.html">
+    <modal-dialog dialog-title="ctrl.title" action-name="Add New Record" data-ng-action-method="ctrl.addItem()" data-close="ctrl.cancel()">
+    
+        <div class="form-group">
+    <div class="row">
+            <div class="col-md-12">
+                <label>Name</label>
+                <textbox-limiter max="30" class="form-control" ng-model="adminCat.name"></textbox-limiter>
+            </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <div class="row">
+            <div class="col-md-12">
+                <label>Description</label>
+                <textarea-limiter rows="5" max="200" class="form-control auto-height" ng-model="adminCat.description"></textarea-limiter>
+            </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <div class="row">
+            <div class="col-md-6">
+                <label>Image</label>
+                <image-upload image-height="150" ng-model="addImage" mode="md"></image-upload>
+            </div>
+            <div class="col-md-6">
+                <label>Color</label>
+                <input type="text" ng-model="ctrl.color" class="form-control"/>
+            </div>
+    </div>
+    </div>
+</modal-dialog>
+</script>
+
+
+

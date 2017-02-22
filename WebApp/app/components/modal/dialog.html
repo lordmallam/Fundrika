@@ -1,0 +1,14 @@
+﻿<div>
+    <div class="modal-header">
+        <div class="col-md-10"><h3>{{title}}</h3></div>
+            <span class="fa-stack fa-md icon-bg pull-right" title="View sub categories" ng-click="cancel()">
+            <i class="fa fa-circle fa-stack-2x cursor-pointer"></i>
+            <i class="fa fa-times  fa-stack-1x fa-stack-1x-f icon-color cursor-pointer"></i>
+        </span>
+    </div>
+    <div class="modal-body" ng-transclude></div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="action()">{{actionName}}</button>
+        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
