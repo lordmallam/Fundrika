@@ -8,7 +8,13 @@
     </div>
     <div class="modal-body" ng-transclude></div>
     <div class="modal-footer">
-        <button class="btn btn-success" ng-click="action()">{{actionName}}</button>
+        <div class="col-md-6">
+            <span class="text-left error-message">{{errorMessage}}</span>
+        </div>
+        <div class="col-md-6">
+            <span ng-if="isLoading"><i class="fa fa-refresh fa-spin"></i></span>
+        <button class="btn btn-success" ng-click="action()" ng-disabled="isLoading">{{actionName}}</button>
         <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+        </div>    
     </div>
 </div>

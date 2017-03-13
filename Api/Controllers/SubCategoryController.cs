@@ -1,5 +1,4 @@
-﻿using Fundrika.Data;
-using Fundrika_Services.Objects;
+﻿using Fundrika_Services.Objects;
 using Fundrika_Services.Services;
 using Fundrika_Services.Services.Interfaces;
 using System;
@@ -11,18 +10,27 @@ using System.Web.Http;
 
 namespace Fundrika_WebApi.Controllers
 {
-    public class CategoryController : ApiController
+    public class SubCategoryController : ApiController
     {
-        private ICategory categoryService = new CategoryService();
+        private ISubCategory subCategoryService = new SubCategoryService();
 
-        public IEnumerable<CategoriesObj> Get()
+        public IEnumerable<SubCategoriesObj> Get()
         {
-            return categoryService.GetCategory();
+            return subCategoryService.GetSubCategory();
         }
 
         public IHttpActionResult Get(int id)
         {
-            var result = categoryService.GetCategory(id);
+            var result = subCategoryService.GetSubCategory(id);
+            if (result != null)
+                return Ok(result);
+            return NotFound();
+
+        }
+
+        public IHttpActionResult GetByCategory(int id)
+        {
+            var result = subCategoryService.GetSubCategoryByCategoryId(id);
             if (result != null)
                 return Ok(result);
             return NotFound();
@@ -30,31 +38,31 @@ namespace Fundrika_WebApi.Controllers
         }
 
         //[Authorize]
-        public IHttpActionResult Post(CategoriesObj nCategory)
+        public IHttpActionResult Post(SubCategoriesObj nCategory)
         {
-            var existRec = categoryService.GetCategoryByName(nCategory.Name);
+            var existRec = subCategoryService.GetSubCategoryByName(nCategory.Name);
             if (existRec != null)
                 return BadRequest("Record with same name exists.");
             try
             {
-                var result = categoryService.AddCategory(nCategory);
+                var result = subCategoryService.AddSubCategory(nCategory);
                 return Ok(result.Id);
             }
             catch (Exception e)
             {
                 return BadRequest(e.GetBaseException().Message);
             }
-            
+
         }
 
-        public IHttpActionResult Put(CategoriesObj uCategory)
+        public IHttpActionResult Put(SubCategoriesObj uCategory)
         {
-            var existRec = categoryService.GetCategory(uCategory.Id);
+            var existRec = subCategoryService.GetSubCategory(uCategory.Id);
             if (existRec == null)
                 return BadRequest("No such record to update.");
             try
             {
-                var result = categoryService.UpdateCategory(uCategory);
+                var result = subCategoryService.UpdateCategory(uCategory);
                 if (result)
                     return Ok();
                 else
@@ -69,12 +77,12 @@ namespace Fundrika_WebApi.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var existRec = categoryService.GetCategory(id);
+            var existRec = subCategoryService.GetSubCategory(id);
             if (existRec == null)
                 return BadRequest("No such record to delete");
             try
             {
-                var result = categoryService.DeleteCategory(existRec);
+                var result = subCategoryService.DeleteSubCategory(existRec);
                 if (result)
                     return Ok();
                 else

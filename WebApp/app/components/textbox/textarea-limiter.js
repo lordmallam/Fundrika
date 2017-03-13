@@ -1,4 +1,6 @@
-﻿angular.module('fundrikaApp')
+﻿"use strict";
+
+angular.module('fundrikaApp')
     .directive('textareaLimiter', function () {
         return {
             restrict: 'E',
@@ -6,8 +8,7 @@
                 ngModel: '=',
                 rows:'@'
             },
-            link: function (scope, elem, attr, ctrl) {
-                angular.element(elem).addClass(attr.customStyle);
+            link: function (scope, elem, attr) {
                 var textbox = angular.element(elem[0].querySelector('textarea'));
                 var label = angular.element(elem[0].querySelector('label'));
                 label[0].textContent = '0/' + attr.max;

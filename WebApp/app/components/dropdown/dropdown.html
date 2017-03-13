@@ -1,0 +1,10 @@
+﻿<div uib-dropdown>
+    <div id="{{id}}" class="dropdown-btn-default" uib-dropdown-toggle ng-disabled="disabled">
+    <span class="dropdown-btn-text" ng-style="{'line-height' : lineHeight}">{{ngModel.name}}</span> <span class="fa fa-chevron-down pull-right" ng-style="{'line-height' : lineHeight}"></span>
+        <div class="clear"></div>
+</div>
+    <ul class="dropdown-panel" uib-dropdown-menu role="menu" aria-labelledby="{{id}}">
+        <input type="text" ng-model="d_searchText" class="form-control" placeholder="Filter..." ng-if="showFilter" ng-click="$event.stopPropagation()"/>
+        <li role="menuitem" ng-repeat="item in list | filter: {name:d_searchText} | orderBy: 'name'" ng-click="itemChanged(item)">{{item.name}}</li>
+    </ul>
+</div>

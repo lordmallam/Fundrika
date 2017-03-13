@@ -366,6 +366,8 @@ namespace Fundrika_Services.Objects
 
         public string Color { get; set; }
 
+        public string CategoryName { get; set; }
+
         public int CategoryId { get; set; }
 
     }

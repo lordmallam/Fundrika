@@ -16,13 +16,16 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'colorpicker.module'
   ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, $qProvider) {
       $locationProvider.html5Mode({
           enabled: true,
           requireBase: false
       });
+
+      $qProvider.errorOnUnhandledRejections(false);
 
       var interceptor = function (User, $q, $location) {
           return {
@@ -80,6 +83,11 @@ angular
               templateUrl: 'views/admin/category.html',
               controller: 'adminCategoryCtrl',
               controllerAs: 'adminCat'
+          })
+          .when('/admin/sub-category', {
+              templateUrl: 'views/admin/sub_category.html',
+              controller: 'adminSubCategoryCtrl',
+              controllerAs: 'adminSubCat'
           })
         .otherwise({
             redirectTo: '/'

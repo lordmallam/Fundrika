@@ -189,6 +189,15 @@ background-color:#538ac6;
 color:#fff;
 }
 
+thead a{
+    color:#fff;
+    cursor:pointer;
+}
+thead a:hover{
+    color:#7defcb;
+    text-decoration:none;
+}
+
 .action-col{
     width:150px;
 }
@@ -233,43 +242,10 @@ border-radius: 5px;
 .code-text-adjustment{
     vertical-align:super;
 }
-/* End App Styling */
 
 
-/* Directive Styles*/
-
-.text-limiter input{
-    width:93%;
-    padding:0;
-    margin:0;
-    border:none;
-}
-
-.text-limiter input:focus{
-    border:none;
-    outline: 0 none;
-}
-
-
-.text-limiter textarea{
-    width:93%;
-    padding:0;
-    margin:0;
-    border:none;
-}
-
-.text-limiter textarea:focus{
-    border:none;
-    outline: 0 none;
-}
-
-
-
-.text-limiter label{
-    float:right;
-    max-width: 7%;
-    font-size:small;
-    font-weight:normal;
+.bold-text{
+    font-weight:bold;
 }
 
 .auto-height{
@@ -343,6 +319,79 @@ border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 }
 
+.error-message{
+    color:#ff4500;
+}
+
+.form-dropdown{
+    padding:0;
+}
+
+.form-dropdown .dropdown-btn-default{
+    padding: 0 15px;
+}
+
+.form-dropdown .dropdown-panel{
+    width: 100%;
+    max-width: 400px;
+}
+
+.dropdown-panel{
+    max-height:300px;
+    overflow-y:auto;
+}
+
+.dropdown-panel input{
+    margin:5px 10px;
+    width: calc(100% - 20px);
+}
+
+.dropdown-panel li{
+    padding: 5px 10px;
+}
+
+.dropdown-panel li:hover{
+    background-color:#538ac6;
+    color:#fff;
+}
+
+/* End App Styling */
+
+
+/* Directive Styles*/
+
+.text-limiter input{
+    width:93%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+
+.text-limiter input:focus{
+    border:none;
+    outline: 0 none;
+}
+
+
+.text-limiter textarea{
+    width:93%;
+    padding:0;
+    margin:0;
+    border:none;
+}
+
+.text-limiter textarea:focus{
+    border:none;
+    outline: 0 none;
+}
+
+.text-limiter label{
+    float:right;
+    max-width: 7%;
+    font-size:small;
+    font-weight:normal;
+}
+
 .image-upload-btn-md {
     padding:15px;
     background-color:#e5e5e5;
@@ -356,10 +405,6 @@ border-top-right-radius: 5px;
 
 .image-upload .md{
     border:1px solid #e5e5e5;
-}
-
-.bold-text{
-    font-weight:bold;
 }
 
 /* End Directive Styles*/

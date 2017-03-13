@@ -56,6 +56,6 @@ angular.module('fundrikaApp')
           }
       };
 
-      vm.isActive = function (route) { return Utility.isActivePath(route) };
+      vm.isActive = function (route) { return Utility.isActivePath(route); };
 
   });

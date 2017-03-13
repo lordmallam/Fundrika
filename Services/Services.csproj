@@ -89,9 +89,12 @@
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\Interfaces\IAccountType.cs" />
+    <Compile Include="Services\Interfaces\ICategory.cs" />
     <Compile Include="Services\Interfaces\ICountry.cs" />
     <Compile Include="Services\AccountTypeService.cs" />
+    <Compile Include="Services\Interfaces\ISubCategory.cs" />
     <Compile Include="Services\Interfaces\IUser.cs" />
+    <Compile Include="Services\SubCategoryService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\Utility.cs" />
   </ItemGroup>

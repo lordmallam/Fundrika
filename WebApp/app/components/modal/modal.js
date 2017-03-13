@@ -1,4 +1,6 @@
-﻿angular.module('fundrikaApp')
+﻿"use strict";
+
+angular.module('fundrikaApp')
     .directive('modalDialog', function () {
         return {
             restrict: 'E',
@@ -7,8 +9,10 @@
                 actionName:'@',
                 action: '&ngActionMethod',
                 cancel: '&close',
-                title: '=dialogTitle'
+                title: '=dialogTitle',
+                errorMessage: '=',
+                isLoading: '='
             },
-            templateUrl: 'components/modal/dialog.html'
+            templateUrl: 'components/modal/modal.html'
         };
 });
