@@ -15,6 +15,28 @@ angular.module('fundrikaApp')
             });
         }
 
+        function getByAction(entity, action) {
+            var requestURL = URL + entity + "/" + action;
+            return $http.get(requestURL)
+              .then(function (res) {
+                  return res.data;
+              })
+            .catch(function (res) {
+                return $q.reject(res);
+            });
+        }
+
+        function getByActionId(entity, action, id) {
+            var requestURL = URL + entity + "/" + action + "/" + id;
+            return $http.get(requestURL)
+              .then(function (res) {
+                  return res.data;
+              })
+            .catch(function (res) {
+                return $q.reject(res);
+            });
+        }
+
         function add(entity, payload) {
             var requestURL = URL + entity;
             return $http.post(requestURL, payload)
@@ -50,6 +72,8 @@ angular.module('fundrikaApp')
 
         return {
             all: all,
+            getByActionId: getByActionId,
+            getByAction: getByAction,
             add: add,
             edit: edit,
             deleted: deleted

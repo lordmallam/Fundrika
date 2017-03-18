@@ -10,9 +10,9 @@
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('country')">Countries<i class="fa fa-flag pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showCountryMenu">
-                    <a href="/admin/country">Country</a>
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('country')" ng-class="{active: adminNav.isActive('/admin/country')}">Countries<i class="fa fa-flag pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showCountryMenu || adminNav.isActive('/admin/country')">
+                    <a href="/admin/country" ng-class="{active: adminNav.isActive('/admin/country')}">Country</a>
                 </div>
                 </div>
                 
@@ -23,10 +23,11 @@
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('payment')">Payments<i class="fa fa-credit-card pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showPaymentMenu">
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('payment')" ng-class="{active: adminNav.isActive('/admin/payment-method')}">Payments<i class="fa fa-credit-card pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showPaymentMenu || adminNav.isActive('/admin/payment-method')">
                     <a href="/admin/donation">Donation</a>
                     <a href="/admin/payout">Payout</a>
+                    <a href="/admin/payment-method" ng-class="{active: adminNav.isActive('/admin/payment-method')}">Payment Methods</a>
                 </div>
                 </div>
                 

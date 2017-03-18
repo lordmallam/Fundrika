@@ -12,6 +12,7 @@ namespace Fundrika_Services.Services
     public class CountryService : ICountry
     {
         private FundRikaEntities db = new FundRikaEntities();
+        private CommonService cs = new CommonService();
 
         public List<CountriesObj> GetCountry()
         {
@@ -39,19 +40,77 @@ namespace Fundrika_Services.Services
             }).FirstOrDefault();            
         }
         
-        CountriesObj ICountry.AddCountry(Country obj)
+        public CountriesObj AddCountry(CountriesObj obj)
         {
-            throw new NotImplementedException();
+            Country nItem = new Country();
+            nItem.Name = obj.Name;
+            nItem.URL = obj.URL;
+            nItem.Icon = obj.Icon;
+            nItem.Currency = obj.Currency;
+            nItem.CurrencySymbol = obj.CurrencySymbol;
+            try
+            {
+                var nObject = (Country)cs.Add(nItem);
+                obj.Id = nObject.Id;
+                return obj;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
         }
 
-        CountriesObj ICountry.UpdateCountry(Country obj)
+        public bool UpdateCountry(CountriesObj obj)
         {
-            throw new NotImplementedException();
+            Country nItem = new Country();
+            nItem.Name = obj.Name;
+            nItem.URL = obj.URL;
+            nItem.Icon = obj.Icon;
+            nItem.CurrencySymbol = obj.CurrencySymbol;
+            nItem.Currency = obj.Currency;
+            nItem.Id = obj.Id;
+            try
+            {
+                return cs.Update(nItem);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
-        public bool DeleteCountry(int id)
+        public bool DeleteCountry(CountriesObj dObj)
         {
-            throw new NotImplementedException();
+            Country nItem = new Country();
+            nItem.Id = dObj.Id;
+            try
+            {
+                return cs.Delete(nItem);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
+
+        public CountriesObj GetCountryByName(string name)
+        {
+            return db.Countries.Where(x => x.Name == name).Select(x => new CountriesObj
+            {
+                Id = x.Id,
+                Name = x.Name,
+                URL = x.URL,
+                Currency = x.Currency,
+                CurrencySymbol = x.CurrencySymbol,
+                Icon = x.Icon
+            }).FirstOrDefault();
         }
     }
 }

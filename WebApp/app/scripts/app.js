@@ -84,11 +84,21 @@ angular
               controller: 'adminCategoryCtrl',
               controllerAs: 'adminCat'
           })
-          .when('/admin/sub-category', {
+          .when('/admin/sub-category/:categoryid?', {
               templateUrl: 'views/admin/sub_category.html',
               controller: 'adminSubCategoryCtrl',
               controllerAs: 'adminSubCat'
           })
+        .when('/admin/country', {
+            templateUrl: 'views/admin/country.html',
+            controller: 'adminCountryCtrl',
+            controllerAs: 'adminCountry'
+        })
+        .when('/admin/payment-method', {
+          templateUrl: 'views/admin/payment_methods.html',
+          controller: 'adminPaymentMethodCtrl',
+          controllerAs: 'adminPaymentMethod'
+        })
         .otherwise({
             redirectTo: '/'
         });

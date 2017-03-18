@@ -10,10 +10,11 @@ namespace Fundrika_Services.Services.Interfaces
 {
     public interface ICountry
     {
-        CountriesObj AddCountry(Country obj);
-        bool DeleteCountry(int id);
+        CountriesObj AddCountry(CountriesObj obj);
+        bool DeleteCountry(CountriesObj obj);
         List<CountriesObj> GetCountry();
         CountriesObj GetCountry(int id);
-        CountriesObj UpdateCountry(Country obj);
+        CountriesObj GetCountryByName(string name);
+        bool UpdateCountry(CountriesObj obj);
     }
 }

@@ -1,7 +1,8 @@
 ﻿'use strict';
 
 angular.module('fundrikaApp')
-  .controller('adminSubCategoryCtrl', function (Category, Utility, $uibModal, $scope, Common, $q) {
+  .controller('adminSubCategoryCtrl', function (Category, Utility, $uibModal, $scope, Common, $q, $routeParams, $location) {
+      var categoryId = $routeParams.categoryid;
       var entity = 'subcategory';
       var parentEntity = 'category';
       var vm = this;
@@ -14,9 +15,10 @@ angular.module('fundrikaApp')
           return Utility.byteToImage(byte);
       };
       vm.errorMessage = 'server connection error';
+      var entityGet = !Utility.isUndefinedOrNull(categoryId) ? Common.getByActionId(entity, "getByCategory", categoryId) : Common.all(entity);
       var promises = [
           Common.all(parentEntity),
-          Common.all(entity)          
+          entityGet
       ];
 
       $q.all(promises).then(function (data) {
@@ -30,7 +32,7 @@ angular.module('fundrikaApp')
       vm.openAddDialog = function (parentList) {
          var aDialog = $uibModal.open({
               templateUrl: 'item.html',
-              controller: 'addModalCtrl',
+              controller: 'addSubCategoryModalCtrl',
               controllerAs: 'ctrl',
               resolve: {
                   ParentList: function () {
@@ -54,7 +56,7 @@ angular.module('fundrikaApp')
       vm.openEditDialog = function (item, parentList) {
          var eDialog = $uibModal.open({
               templateUrl: 'item.html',
-              controller: 'editModalCtrl',
+              controller: 'editSubCategoryModalCtrl',
               controllerAs: 'ctrl',
               resolve: {
                   ParentList: function () {
@@ -85,7 +87,7 @@ angular.module('fundrikaApp')
       vm.openDeleteDialog = function (item) {
           var dDialog = $uibModal.open({
               templateUrl: '../../views/admin/delete.html',
-              controller: 'deleteModalCtrl',
+              controller: 'deleteSubCategoryModalCtrl',
               controllerAs: 'ctrl',
               resolve: {
                   DeleteItem: function () {
@@ -124,7 +126,7 @@ angular.module('fundrikaApp')
       };
                   
   })
-.controller('addModalCtrl', function ($scope, $uibModalInstance, Utility, Common, ParentList) {
+.controller('addSubCategoryModalCtrl', function ($scope, $uibModalInstance, Utility, Common, ParentList) {
     var vm = this;
     var entity = 'subcategory';
     vm.title = 'Add New Sub Category';
@@ -183,7 +185,7 @@ angular.module('fundrikaApp')
     }
     
 })
-.controller('editModalCtrl', function ($scope, $uibModalInstance, Utility, Common, EditItem, ParentList) {
+.controller('editSubCategoryModalCtrl', function ($scope, $uibModalInstance, Utility, Common, EditItem, ParentList) {
     var vm = this;
     var entity = 'subcategory';
     vm.title = 'Edit Sub Category | ' + EditItem.Name;
@@ -242,7 +244,7 @@ angular.module('fundrikaApp')
     }
 
 })
-.controller('deleteModalCtrl', function ($scope, $uibModalInstance, Common, DeleteItem) {
+.controller('deleteSubCategoryModalCtrl', function ($scope, $uibModalInstance, Common, DeleteItem) {
     var vm = this;
     var entity = 'subcategory';
     vm.title = 'Delete Sub Category | ' + DeleteItem.Name;

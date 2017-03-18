@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 angular.module('fundrikaApp')
-  .controller('adminCategoryCtrl', function (Utility, $uibModal, $scope, Common, $location) {
-      var entity = 'category';
+  .controller('adminCountryCtrl', function (Utility, $uibModal, $scope, Common, $location) {
+      var entity = 'country';
       var vm = this;
       vm.hasError = false;
       vm.currentPage = 1;
@@ -13,7 +13,7 @@ angular.module('fundrikaApp')
       };
       vm.errorMessage = 'server connection error';
       Common.all(entity).then(function (data) {
-          vm.categoryList = data;
+          vm.list = data;
       }).catch(function (res) {
           vm.hasError = true;
           vm.errorMessage = res.data.Message;          
@@ -21,13 +21,13 @@ angular.module('fundrikaApp')
 
       vm.openAddDialog = function () {
          var aDialog = $uibModal.open({
-              templateUrl: 'item.html',
-              controller: 'addCategoryModalCtrl',
+           templateUrl: 'item.html',
+           controller: 'addCountryModalCtrl',
               controllerAs: 'ctrl'
          });
 
          aDialog.result.then(function (addedItem) {
-             vm.categoryList.push(addedItem);
+             vm.list.push(addedItem);
          });
       };
 
@@ -35,7 +35,7 @@ angular.module('fundrikaApp')
       vm.openEditDialog = function (item) {
          var eDialog = $uibModal.open({
               templateUrl: 'item.html',
-              controller: 'editCategoryModalCtrl',
+              controller: 'editCountryModalCtrl',
               controllerAs: 'ctrl',
               resolve: {
                   EditItem: function () {
@@ -45,9 +45,9 @@ angular.module('fundrikaApp')
          });
 
          eDialog.result.then(function (updatedItem) {
-             for (var i = 0; i < vm.categoryList.length; i++) {
-                 if (vm.categoryList[i].Id === updatedItem.Id) {
-                     vm.categoryList[i] = updatedItem;
+             for (var i = 0; i < vm.list.length; i++) {
+                 if (vm.list[i].Id === updatedItem.Id) {
+                     vm.list[i] = updatedItem;
                      break;
                  }
              }
@@ -57,7 +57,7 @@ angular.module('fundrikaApp')
       vm.openDeleteDialog = function (item) {
           var dDialog = $uibModal.open({
               templateUrl: '../../views/admin/delete.html',
-              controller: 'deleteCategoryModalCtrl',
+              controller: 'deleteCountryModalCtrl',
               controllerAs: 'ctrl',
               resolve: {
                   DeleteItem: function () {
@@ -67,9 +67,9 @@ angular.module('fundrikaApp')
           });
 
           dDialog.result.then(function (deletedItem) {
-              for (var i = 0; i < vm.categoryList.length; i++) {
-                  if (vm.categoryList[i].Id === deletedItem) {
-                      vm.categoryList.splice(i, 1);
+              for (var i = 0; i < vm.list.length; i++) {
+                  if (vm.list[i].Id === deletedItem) {
+                      vm.list.splice(i, 1);
                       break;
                   }
               }
@@ -79,25 +79,21 @@ angular.module('fundrikaApp')
       vm.sortBy = function (propertyName) {
           vm.isSorted = true;
           if (vm.sortByName) {
-              vm.categoryList = Utility.orderByAsc(vm.categoryList, propertyName);
+              vm.list = Utility.orderByAsc(vm.list, propertyName);
               vm.sortByName = !vm.sortByName;
           } else {
-              vm.categoryList = Utility.orderByDesc(vm.categoryList, propertyName);
+              vm.list = Utility.orderByDesc(vm.list, propertyName);
               vm.sortByName = !vm.sortByName;
           }
           
       };
-
-      vm.redirect = function(id) {
-          $location.url('/admin/sub-category/' + id)
-      };
                   
   })
-.controller('addCategoryModalCtrl', function ($scope, $uibModalInstance, Utility, Common) {
+.controller('addCountryModalCtrl', function ($scope, $uibModalInstance, Utility, Common) {
     var vm = this;
-    var entity = 'category';
-    vm.title = 'Add New Category';
-    vm.actionName = 'Add Category';
+    var entity = 'country';
+    vm.title = 'Add New Country';
+    vm.actionName = 'Add Country';
     vm.errorMessage = '';
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
@@ -106,17 +102,18 @@ angular.module('fundrikaApp')
         if (isValidate()) {
             vm.isLoading = true;
             vm.errorMessage = '';
-            var getImageResize = Utility.handleImageConversion(vm.addImage, 800, 300, 0);
+            var getImageResize = Utility.handleImageConversion(vm.addImage, 150, 100, 0);
             getImageResize.then(function (imgArray) {
-                var nCategory = {};
-                nCategory.Name = vm.name;
-                nCategory.Description = vm.description;
-                nCategory.Color = vm.color;
-                nCategory.Icon = imgArray;
-                Common.add(entity, nCategory)
+                var nCountry = {};
+                nCountry.Name = vm.name;
+                nCountry.Currency = vm.currency;
+                nCountry.URL = vm.url;
+                nCountry.CurrencySymbol = vm.currencySymbol;
+                nCountry.Icon = imgArray;
+                Common.add(entity, nCountry)
                 .then(function (res) {
-                    nCategory.id = res;
-                    $uibModalInstance.close(nCategory);
+                    nCountry.id = res;
+                    $uibModalInstance.close(nCountry);
                 })
                 .catch(function (reject) {
                     vm.errorMessage = reject.data.Message;
@@ -135,24 +132,25 @@ angular.module('fundrikaApp')
     };
 
     function isValidate() {
-        return !(Utility.isUndefinedOrNull(vm.name) ||
-            Utility.isUndefinedOrNull(vm.description) ||
-            Utility.isUndefinedOrNull(vm.color) || Utility.isUndefinedOrNull(vm.addImage));
+      return !(Utility.isUndefinedOrNull(vm.name) ||
+           Utility.isUndefinedOrNull(vm.currency) ||
+           Utility.isUndefinedOrNull(vm.currencySymbol) || Utility.isUndefinedOrNull(vm.addImage));
     }
     
 })
-.controller('editCategoryModalCtrl', function ($scope, $uibModalInstance, Utility, Common, EditItem) {
+.controller('editCountryModalCtrl', function ($scope, $uibModalInstance, Utility, Common, EditItem) {
     var vm = this;
-    var entity = 'category';
-    vm.title = 'Edit Category | ' + EditItem.Name;
-    vm.actionName = 'Edit Category';
+    var entity = 'country';
+    vm.title = 'Edit Country | ' + EditItem.Name;
+    vm.actionName = 'Edit Country';
     vm.errorMessage = '';
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
     vm.name = EditItem.Name;
-    vm.description = EditItem.Description;
-    vm.color = EditItem.Color;
+    vm.url = EditItem.URL;
+    vm.currency = EditItem.Currency;
+    vm.currencySymbol = EditItem.CurrencySymbol;
     vm.uploadImage = "url('" + Utility.byteToImage(EditItem.Icon) + "')";
     vm.addImage = EditItem.Icon;
 
@@ -160,17 +158,18 @@ angular.module('fundrikaApp')
         if (isValidate()) {
             vm.isLoading = true;
             vm.errorMessage = '';
-            var getImageResize = Utility.handleImageConversion(vm.addImage, 800, 300, 0);
+            var getImageResize = Utility.handleImageConversion(vm.addImage, 150, 100, 0);
             getImageResize.then(function (imgArray) {
-                var nCategory = {};
-                nCategory.Name = vm.name;
-                nCategory.Description = vm.description;
-                nCategory.Color = vm.color;
-                nCategory.Icon = imgArray;
-                nCategory.Id = EditItem.Id;
-                Common.edit(entity, nCategory)
+                var nCountry = {};
+                nCountry.Name = vm.name;
+                nCountry.Currency = vm.currency;
+                nCountry.URL = vm.url;
+                nCountry.CurrencySymbol = vm.currencySymbol;
+                nCountry.Icon = imgArray;
+                nCountry.Id = EditItem.Id;
+                Common.edit(entity, nCountry)
                 .then(function () {
-                    $uibModalInstance.close(nCategory);
+                    $uibModalInstance.close(nCountry);
                 })
                 .catch(function (reject) {
                     vm.errorMessage = reject.data.Message;
@@ -190,16 +189,16 @@ angular.module('fundrikaApp')
 
     function isValidate() {
         return !(Utility.isUndefinedOrNull(vm.name) ||
-            Utility.isUndefinedOrNull(vm.description) ||
-            Utility.isUndefinedOrNull(vm.color) || Utility.isUndefinedOrNull(vm.addImage));
+            Utility.isUndefinedOrNull(vm.currency) ||
+            Utility.isUndefinedOrNull(vm.currencySymbol) || Utility.isUndefinedOrNull(vm.addImage));
     }
 
 })
-.controller('deleteCategoryModalCtrl', function ($scope, $uibModalInstance, Common, DeleteItem) {
+.controller('deleteCountryModalCtrl', function ($scope, $uibModalInstance, Common, DeleteItem) {
     var vm = this;
-    var entity = 'category';
-    vm.title = 'Delete Category | ' + DeleteItem.Name;
-    vm.actionName = 'Delete Category';
+    var entity = 'country';
+    vm.title = 'Delete Country | ' + DeleteItem.Name;
+    vm.actionName = 'Delete Country';
     vm.errorMessage = '';
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');

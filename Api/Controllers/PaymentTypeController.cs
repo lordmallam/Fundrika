@@ -10,33 +10,33 @@ using System.Web.Http;
 
 namespace Fundrika_WebApi.Controllers
 {
-    public class CountryController : ApiController
+    public class PaymentTypeController : ApiController
     {
-        private ICountry countryService = new CountryService();
+        private IPaymentType paymentTypeService = new PaymentTypeService();
 
-        public IEnumerable<CountriesObj> Get()
+        public IEnumerable<PaymentTypesObj> Get()
         {
-            return countryService.GetCountry(); ;
+            return paymentTypeService.GetPaymentType(); ;
         }
 
         [Authorize]
         public IHttpActionResult Get(int id)
         {
-            var result = countryService.GetCountry(id);
+            var result = paymentTypeService.GetPaymentType(id);
             if (result != null)
                 return Ok(result);
             return NotFound();
 
         }
 
-        public IHttpActionResult Post(CountriesObj nObj)
+        public IHttpActionResult Post(PaymentTypesObj nObj)
         {
-            var existRec = countryService.GetCountryByName(nObj.Name);
+            var existRec = paymentTypeService.GetPaymentTypeByName(nObj.Name);
             if (existRec != null)
                 return BadRequest("Record with same name exists.");
             try
             {
-                var result = countryService.AddCountry(nObj);
+                var result = paymentTypeService.AddPaymentType(nObj);
                 return Ok(result.Id);
             }
             catch (Exception e)
@@ -46,14 +46,14 @@ namespace Fundrika_WebApi.Controllers
 
         }
 
-        public IHttpActionResult Put(CountriesObj uObj)
+        public IHttpActionResult Put(PaymentTypesObj uObj)
         {
-            var existRec = countryService.GetCountry(uObj.Id);
+            var existRec = paymentTypeService.GetPaymentType(uObj.Id);
             if (existRec == null)
                 return BadRequest("No such record to update.");
             try
             {
-                var result = countryService.UpdateCountry(uObj);
+                var result = paymentTypeService.UpdatePaymentType(uObj);
                 if (result)
                     return Ok();
                 else
@@ -68,12 +68,12 @@ namespace Fundrika_WebApi.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var existRec = countryService.GetCountry(id);
+            var existRec = paymentTypeService.GetPaymentType(id);
             if (existRec == null)
                 return BadRequest("No such record to delete");
             try
             {
-                var result = countryService.DeleteCountry(existRec);
+                var result = paymentTypeService.DeletePaymentType(existRec);
                 if (result)
                     return Ok();
                 else
