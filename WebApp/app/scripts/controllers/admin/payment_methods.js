@@ -110,7 +110,7 @@ angular.module('fundrikaApp')
                 nPaymentMethod.Icon = imgArray;
                 Common.add(entity, nPaymentMethod)
                 .then(function (res) {
-                    nPaymentMethod.id = res;
+                    nPaymentMethod.Id = res;
                     $uibModalInstance.close(nPaymentMethod);
                 })
                 .catch(function (reject) {

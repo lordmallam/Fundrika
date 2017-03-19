@@ -112,7 +112,7 @@ angular.module('fundrikaApp')
                 nCountry.Icon = imgArray;
                 Common.add(entity, nCountry)
                 .then(function (res) {
-                    nCountry.id = res;
+                    nCountry.Id = res;
                     $uibModalInstance.close(nCountry);
                 })
                 .catch(function (reject) {

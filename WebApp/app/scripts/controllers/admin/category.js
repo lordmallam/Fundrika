@@ -115,7 +115,7 @@ angular.module('fundrikaApp')
                 nCategory.Icon = imgArray;
                 Common.add(entity, nCategory)
                 .then(function (res) {
-                    nCategory.id = res;
+                    nCategory.Id = res;
                     $uibModalInstance.close(nCategory);
                 })
                 .catch(function (reject) {
