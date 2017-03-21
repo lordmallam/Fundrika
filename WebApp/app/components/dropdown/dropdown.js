@@ -12,11 +12,13 @@ angular.module('fundrikaApp')
                 showFilter: '@'
             },
             link: function (scope, elem, attrs, ngModelCtrl) {
-                scope.id = guid();
+              scope.id = guid();
+              scope.list = _.orderBy(scope.list, ['name'], ['asc']);
                 scope.itemChanged = function (selectedItem) {
                     scope.ngModel = selectedItem;
                     ngModelCtrl.$setViewValue(selectedItem);
                 };
+                scope.itemChanged(scope.list[0]);
 
                 function guid() {
                     function s4() {

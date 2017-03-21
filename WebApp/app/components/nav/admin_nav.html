@@ -3,44 +3,44 @@
        <div class="col-md-12">
             <nav class="admin-nav">
                 <a href="/admin" class="font-white"><div class="admin-nav-parent first" ng-class="{active: adminNav.isActive('/admin')}">Admin Panel<i class="fa fa-home pull-right"></i></div></a>
-                <div class="admin-nav-parent" ng-class="{active: adminNav.isActive('/admin/category') || adminNav.isActive('/admin/sub-category')}" ng-click="adminNav.toggle('category')">Categories<i class="fa fa-tags pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showCategoryMenu || adminNav.isActive('/admin/category') || adminNav.isActive('/admin/sub-category')">
-                    <a href="/admin/category" ng-class="{active: adminNav.isActive('/admin/category')}">Category</a>
-                    <a href="/admin/sub-category" ng-class="{active: adminNav.isActive('/admin/sub-category')}">Sub Category</a>
+                <div class="admin-nav-parent" ng-class="{active: adminNav.isActive('/admin/categories') || adminNav.isActive('/admin/sub-categories')}" ng-click="adminNav.toggle('category')">Categorization<i class="fa fa-tags pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showCategoryMenu || adminNav.isActive('/admin/categories') || adminNav.isActive('/admin/sub-categories')">
+                    <a href="/admin/categories" ng-class="{active: adminNav.isActive('/admin/categories')}">Categories</a>
+                    <a href="/admin/sub-categories" ng-class="{active: adminNav.isActive('/admin/sub-categories')}">Sub Category</a>
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('country')" ng-class="{active: adminNav.isActive('/admin/country')}">Countries<i class="fa fa-flag pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showCountryMenu || adminNav.isActive('/admin/country')">
-                    <a href="/admin/country" ng-class="{active: adminNav.isActive('/admin/country')}">Country</a>
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('country')" ng-class="{active: adminNav.isActive('/admin/countries')}">Locations<i class="fa fa-flag pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showCountryMenu || adminNav.isActive('/admin/countries')">
+                    <a href="/admin/countries" ng-class="{active: adminNav.isActive('/admin/countries')}">Countries</a>
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('project')">Projects<i class="fa fa-briefcase pull-right"></i>
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('project')">Fundrikas<i class="fa fa-briefcase pull-right"></i>
                     <div class="admin-nav-child" ng-show="adminNav.showProjectMenu">
-                    <a href="/admin/project">Project</a>
-                    <a href="/admin/reminder">Reminder</a>
+                    <a href="/admin/projects">Projects</a>
+                    <a href="/admin/reminders">Reminders</a>
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('payment')" ng-class="{active: adminNav.isActive('/admin/payment-method')}">Payments<i class="fa fa-credit-card pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showPaymentMenu || adminNav.isActive('/admin/payment-method')">
-                    <a href="/admin/donation">Donation</a>
-                    <a href="/admin/payout">Payout</a>
-                    <a href="/admin/payment-method" ng-class="{active: adminNav.isActive('/admin/payment-method')}">Payment Methods</a>
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('payment')" ng-class="{active: adminNav.isActive('/admin/payment-methods')}">Payments<i class="fa fa-credit-card pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showPaymentMenu || adminNav.isActive('/admin/payment-methods')">
+                    <a href="/admin/donations">Donations</a>
+                    <a href="/admin/payouts">Payouts</a>
+                    <a href="/admin/payment-methods" ng-class="{active: adminNav.isActive('/admin/payment-methods')}">Payment Methods</a>
                 </div>
                 </div>
                 
-                <div class="admin-nav-parent" ng-click="adminNav.toggle('user')">Users<i class="fa fa-users pull-right"></i>
-                    <div class="admin-nav-child" ng-show="adminNav.showUserMenu">
-                    <a href="/admin/user">User</a>
-                    <a href="/admin/admin">Admin</a>
+                <div class="admin-nav-parent" ng-click="adminNav.toggle('user')" ng-class="{active: adminNav.isActive('/admin/admins')}">Users<i class="fa fa-users pull-right"></i>
+                    <div class="admin-nav-child" ng-show="adminNav.showUserMenu || adminNav.isActive('/admin/admins')">
+                    <a href="/admin/users">Users</a>
+                    <a href="/admin/admins" ng-class="{active: adminNav.isActive('/admin/admins')}">Admins</a>
                 </div>
                 </div>
                 
                 <div class="admin-nav-parent" ng-click="adminNav.toggle('faq')">FAQs<i class="fa fa-question-circle pull-right"></i>
                     <div class="admin-nav-child" ng-show="adminNav.showFAQMenu">
-                    <a href="/admin/faq">FAQ</a>
+                    <a href="/admin/faqs">Q&As</a>
                 </div>
                 </div>
                 

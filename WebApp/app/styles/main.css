@@ -407,6 +407,34 @@ border-top-right-radius: 5px;
     border:1px solid #e5e5e5;
 }
 
+.image-upload-image-sm{
+    width:80px;
+    height:80px;
+    background-size:cover;
+    background-position:center center;
+    -webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;
+position:absolute;
+left:0;
+top:0;
+border:1px solid #bebebe;
+}
+
+.image-upload-btn-sm {
+    padding:10px 15px 10px 20px;
+    background-color:#e5e5e5;
+    position:relative;
+    left:55px;
+    top:10px;
+    width: calc(100% - 55px);
+}
+
+.image-upload .sm{
+    position:relative;
+    min-height: 100px;
+}
+
 /* End Directive Styles*/
 
 

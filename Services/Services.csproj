@@ -86,10 +86,12 @@
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Objects\DBObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\CommonService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\Interfaces\IAccountType.cs" />
+    <Compile Include="Services\Interfaces\IAdmin.cs" />
     <Compile Include="Services\Interfaces\ICategory.cs" />
     <Compile Include="Services\Interfaces\ICountry.cs" />
     <Compile Include="Services\AccountTypeService.cs" />

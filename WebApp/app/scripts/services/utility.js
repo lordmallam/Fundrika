@@ -8,12 +8,15 @@ angular.module('fundrikaApp')
         }
 
         function byteToImage(byte) {
-            var dataCheck = byte.split(',');
+          return byte === null ? null : split(byte);
+          function split(b) {
+            var dataCheck = b.split(',');
             if (dataCheck.length === 1) {
-                return 'data:image/png;base64,' + byte;
+              return 'data:image/png;base64,' + b;
             } else {
-                return byte;
+              return byte;
             }
+          };
         }
 
         function resizeImage(img, maxWidth, maxHeight, degrees) {
@@ -98,7 +101,7 @@ angular.module('fundrikaApp')
          }
 
          function isUndefinedOrNull(value) {
-             return (angular.isUndefined(value) || value === '' || value === ' ');                 
+             return (angular.isUndefined(value) || value === '' || value === ' ' || value === null);                 
          }
 
          function handleImageConversion(imgString, width, height, rotate) {             
