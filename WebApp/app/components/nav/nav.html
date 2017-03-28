@@ -1,4 +1,31 @@
-﻿<div ng-contoller="navCtrl as nav">
-    <button ng-click="nav.logout()" class="btn">Logout</button>
+﻿<div ng-controller="navCtrl as nav">
+    <div class="container-fluid nav-bg">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="margin-right-15 inline">
+                    <a href="/">
+                    <img class="logo" src="../../images/logo-209x60.svg" />
+                </a>
+                </div>
+                <div class="inline nav-main-links">
+                    <a href="#">Discover</a>
+                    <a href="#">Start a project</a>                 
+                    <a href="#">How it works</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="user-dp-container">
+                <div class="user-dp round-corners"></div>
+              </div>
+                <div class="search">
+                    <i class="fa fa-search fa-lg font-white" ng-click="nav.toggleSearch()" ng-if="!nav.searchActive"></i>
+                    <i class="fa fa-times fa-lg font-lightgrey" ng-click="nav.toggleSearch()" ng-if="nav.searchActive"></i>
+                    <div ng-class="{'text-search' : !nav.searchActive , 'text-search-active' : nav.searchActive}">
+                        <input type="text" placeholder="Search..." ng-model="search"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
  

@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'colorpicker.module'
+    'colorpicker.module',
+    'angular-click-outside'
   ])
   .config(function ($routeProvider, $locationProvider, $httpProvider, $qProvider) {
       $locationProvider.html5Mode({
